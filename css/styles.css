@@ -1,0 +1,224 @@
+/* styles.css - extracted and organized styles for VenueDB
+
+Sections:
+  1) Base theme and typography
+  2) Form controls and buttons
+  3) Table styles
+  4) Alerts
+  5) Collapsible list & caret
+  6) Nested lists (countries -> cities)
+  7) City/collapsible badge layout
+  8) Venue table container and responsive tweaks
+  9) Country list adjustments
+*/
+
+/* 1) Base theme and typography */
+body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h2, h5 { color: #ffffff; }
+
+#file_info { color: #888 !important; }
+
+/* 2) Form controls and buttons */
+label { color: #b0b0b0; font-weight: 500; }
+
+/* Card styles (restored) */
+.card {
+    background-color: #252525;
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.card-header {
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #3a3a3a;
+    color: #ffffff;
+    border-radius: 4px 4px 0 0 !important;
+}
+
+.card-body { background-color: #252525; }
+
+/* Compact rules for the filters card (explicit class) */
+.filters-card { border-radius: 4px; }
+.filters-card .card-header {
+    padding: 6px 8px !important;
+    font-size: 0.92rem !important;
+}
+.filters-card .card-body {
+    padding: 6px 8px !important;
+}
+.filters-card label { font-size: 0.85rem !important; margin-bottom: 2px !important; }
+.filters-card .form-control { padding: 4px 8px !important; font-size: 0.88rem !important; height: auto !important; }
+.filters-card .row { margin-bottom: 4px !important; }
+.filters-card .row.mt-3 { margin-top: 2px !important; }
+.filters-card .btn { padding: 4px 8px !important; font-size: 0.88rem !important; }
+.filters-card .card-body > .row > .col-md-6 { padding-bottom: 4px !important; }
+.filters-card .inline-controls { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+
+/* Target inline style used in index.html if needed */
+.filters-card [style*="display:flex"] { gap: 8px !important; }
+
+.form-control {
+    background-color: #2d2d2d;
+    border: 1px solid #3a3a3a;
+    color: #e0e0e0;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    background-color: #2d2d2d;
+    border-color: #4a9eff;
+    color: #e0e0e0;
+    box-shadow: none;
+    outline: none;
+}
+
+.form-control option { background-color: #2d2d2d; color: #e0e0e0; }
+
+.btn-secondary {
+    background-color: #3a3a3a;
+    border: none;
+    color: #e0e0e0;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover { background-color: #4a4a4a; border: none; }
+
+/* 3) Table styles */
+.table { background-color: #252525; color: #e0e0e0; border-collapse: collapse; }
+
+.table thead th {
+    background-color: #2d2d2d;
+    border: 1px solid #3a3a3a;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px;
+}
+
+.table tbody td { border: 1px solid #3a3a3a; padding: 10px; }
+.table-striped tbody tr:nth-of-type(odd) { background-color: #252525; }
+.table-striped tbody tr:nth-of-type(even) { background-color: #2a2a2a; }
+.table-bordered { border: 1px solid #3a3a3a; }
+
+/* 4) Alerts */
+.alert-danger { background-color: #3d1f1f; border: 1px solid #5a2828; color: #ff6b6b; }
+.alert-info { background-color: #1f2d3d; border: 1px solid #284e5a; color: #6bb6ff; }
+
+/* 5) Collapsible list & caret */
+.collapsible {
+    background-color: transparent;
+    color: #e0e0e0;
+    cursor: pointer;
+    padding: 10px 12px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.caret {
+    display: inline-block;
+    margin-right: 8px;
+    transition: transform 0.2s ease;
+    width: 0; height: 0;
+    border-top: 6px solid #e0e0e0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+.caret-down { transform: rotate(180deg); }
+
+/* 6) Nested lists (countries -> cities) */
+.nested {
+    display: none;
+    padding-left: 0; /* remove extra left padding */
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 8px; /* small indent for visual hierarchy */
+}
+
+/* per-item spacing */
+.nested li { list-style: none; padding: 2px 0; color: #dcdcdc; }
+.nested > li { margin: 0; }
+.nested > li > .collapsible { padding: 2px 6px; font-size: 0.95rem; }
+
+/* spacing around venue tables inside city entries */
+.nested .venue-table-container { margin-top: 0px; margin-bottom: 15px; }
+
+.venue-item { padding-left: 18px; font-size: 0.95rem; color: #cfcfcf; }
+
+/* 7) City/collapsible badge layout - keeps badges vertically aligned */
+.badge-count {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border-radius: 12px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    margin-left: 8px;
+}
+
+.coll-left { display: flex; align-items: center; flex: 1 1 auto; }
+
+/* Small right column to hold the badge; change width here to adjust spacing */
+.coll-right { width: 96px; min-width: 64px; display: flex; justify-content: flex-end; align-items: center; padding-left: 8px; }
+
+/* City-specific: use inline-flex so badge sits beside the city name.
+   Adjust `gap`, `.city-collapsible .coll-left` and `.city-collapsible .coll-right` to tune spacing. */
+.city-collapsible { display: inline-flex; align-items: center; gap: 6px; width: auto; padding: 0 6px; box-sizing: border-box; }
+.city-collapsible .coll-left { flex: 0 0 200px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.city-collapsible .coll-right { flex: 0 0 64px; width: 64px; display: flex; justify-content: flex-start; padding-left: 6px; }
+
+/* 8) Venue table container and responsive tweaks */
+.venue-table-container { overflow-x: auto; margin-top: 6px; margin-bottom: 6px; text-align: center; width: 100%; margin-left: 0; }
+.venue-table-container table { table-layout: fixed; width: 900px; max-width: 100%; margin: 0 auto; display: table; }
+.venue-table-container table th, .venue-table-container table td { white-space: nowrap; vertical-align: middle; padding: 6px 8px; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 576px) {
+    .badge-count { font-size: 0.7rem; padding: 2px 6px }
+    .collapsible { font-size: 0.95rem }
+    .venue-table-container table th, .venue-table-container table td { padding: 6px 6px }
+}
+
+/* 9) Country list adjustments */
+.country-list { list-style: none; padding-left: 0; margin-left: 0; }
+.country-list > li { margin: 0px 0; }
+.country-list > li > button.collapsible { padding: 6px 8px; }
+.country-list > li > .nested { max-width: none; margin-left: 0; padding-left: 40px; }
+.country-list > li > .nested .nested { max-width: 100%; margin-left: 8px; }
+.country-list > li > .nested > li > .collapsible > span > span { margin-left: 30px !important; }
+.country-list > li > .nested .venue-table-container { text-align: center; }
+
+/* Reduce gap between the stats card and the countries list (override Bootstrap mt-5) */
+.stats-card + #excel_data {
+    margin-top: 8px !important;
+}
+
+@media (max-width: 576px) {
+    .stats-card + #excel_data { margin-top: 10px !important; }
+}
+
+/* Compact styles for the stats (country/city/venue) card */
+.stats-card { border-radius: 4px; }
+.stats-card .card-body {
+    padding: 12px 12px !important; /* increased vertical padding to make card taller */
+    min-height: 46px !important;
+}
+.stats-card .row { margin-bottom: 0 !important; }
+.stats-card .col-md-4 { padding-left: 8px !important; padding-right: 8px !important; }
+.stats-card h5 { font-size: 1.05rem !important; margin: 0 !important; line-height: 1.25 !important; }
+
+/* Slightly larger spacing on small screens too */
+@media (max-width: 576px) {
+    .stats-card .card-body { padding: 10px 10px !important; }
+    .stats-card h5 { font-size: 1rem !important; }
+}
